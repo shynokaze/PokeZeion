@@ -1,0 +1,82 @@
+ClansButton < UIButton
+  size: 83 198
+  color: alpha
+  icon-color: #888888
+  border-width: 1
+  border-color: black
+  anchors.top: parent.top
+  anchors.left: parent.left
+  @onClick: clanWindow(doCorrectString(self:getText()))
+
+  $!first:
+    anchors.left: prev.right
+    margin-left: 4
+
+  $hover:
+    icon-color: #ffffff
+
+  $pressed:
+    icon-color: #cccccc
+
+Panel
+  HorizontalScrollBar
+    id: scrollBar
+    step: 86
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    horizontal-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-bottom: 15
+
+    ClansButton
+      text: gardestrike
+      icon: /images/game/shop/clans/gardestrike
+      @onClick:  g_game.talk("/clan gardestrike,5")     
+
+    ClansButton
+      text: ironhard
+      icon: /images/game/shop/clans/ironhard
+      @onClick:  g_game.talk("/clan ironhard,5") 
+
+    ClansButton
+      text: malefic
+      icon: /images/game/shop/clans/malefic
+      @onClick:  g_game.talk("/clan malefic,5")         
+
+    ClansButton
+      text: naturia
+      icon: /images/game/shop/clans/naturia
+      @onClick:  g_game.talk("/clan naturia,5")         
+
+    ClansButton
+      text: orebound
+      icon: /images/game/shop/clans/orebound
+      @onClick:  g_game.talk("/clan orebound,5")         
+
+    ClansButton
+      text: psycraft
+      icon: /images/game/shop/clans/psycraft
+      @onClick:  g_game.talk("/clan psycraft,5")         
+
+    ClansButton
+      text: raibolt
+      icon: /images/game/shop/clans/raibolt
+      @onClick:  g_game.talk("/clan raibolt,5")         
+
+    ClansButton
+      text: seavell
+      icon: /images/game/shop/clans/seavell
+      @onClick:  g_game.talk("/clan seavell,5")     
+
+    ClansButton
+      text: volcanic
+      icon: /images/game/shop/clans/volcanic
+      @onClick:  g_game.talk("/clan volcanic,5")     
+
+    ClansButton
+      text: wingeon
+      icon: /images/game/shop/clans/wingeon
+      @onClick:  g_game.talk("/clan wingeon,5")     

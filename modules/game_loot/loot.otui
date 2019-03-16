@@ -1,0 +1,53 @@
+CharacterWidget < UIWidget
+  size: 32 32
+  background-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    background-color: #ffffff22
+
+MainWindow
+  id: channelsWindow
+  !text: tr('Autoloot')
+  size: 200 80
+  visible: false
+
+  OptionCheckBox
+    id: getAll
+    !text: tr(' Enabled / Disabled')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-right: 10
+    phantom: false
+    @onClick: modules.game_loot.colectAll()
+
+  Button
+    id: helpButton
+    anchors.top: parent.top
+    anchors.left: getAll.right
+    phantom: false
+    margin-top: 1
+    !text: tr('?')
+    !tooltip: tr('Use Left click in the button to\nenable or disabled the automatic \nauto loot system.')
+    width: 15
+    size: 14 14
+
+  Button
+    id: closeButton
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 5
+    !text: tr('Close')
+    width: 60
+    @onClick: modules.game_loot.salvar()
+

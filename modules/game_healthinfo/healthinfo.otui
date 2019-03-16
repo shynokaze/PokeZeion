@@ -1,0 +1,168 @@
+HealthBar < ProgressBar
+  id: healthBar
+  image-source: progressbar.png
+  height: 
+  margin-top: 3
+  margin-left: 32
+  margin-right: 4
+  background-color: #ff4444
+  anchors.top: outfitCreatureBox.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+XPBAR < ProgressBar
+  id: expbar
+  image-source: progressbar.png
+  height: 16
+  margin-top: 2
+  margin-left: 32
+  margin-right: 4
+  background-color: #44ff44
+  anchors.top: healthBar.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+FISHBAR < ProgressBar
+  id: fishbar
+  image-source: progressbar.png
+  height: 16
+  margin-top: 2
+  margin-left: 32
+  margin-right: 4
+  background-color: #44ff44
+  anchors.top: expbar.bottom
+  anchors.left: parent.left
+  anchors.right: parent.right
+explabel < GameLabel
+  id: expeLabel
+  color: white
+  text-align: center
+  font: verdana-11px-rounded
+  anchors.fill: expbar
+  margin-top: 2
+  text: 0 / 0
+  margin-top: 4
+HealthLabel < GameLabel
+  id: healthLabel
+  color: white
+  text-align: center
+  font: verdana-11px-rounded
+  anchors.fill: healthBar
+  margin-top: 2
+  text: 0 / 0
+FishLabel < GameLabel
+  id: fishlab
+  color: white
+  text-align: center
+  font: verdana-11px-rounded
+  anchors.fill: fishbar
+  margin-top: 2
+  text: fishing:
+
+CapLabel < GameLabel
+  id: capLabel
+  color: white
+  font: verdana-11px-rounded
+  anchors.bottom: parent.bottom
+  anchors.left: parent.left
+  anchors.right: parent.horizontalCenter
+  margin-top: 5
+  margin-left: 3
+  text: Cap:
+
+ConditionWidget < UIWidget
+  size: 18 18
+
+  $!first:
+    margin-left: 2
+
+MiniWindow
+  image-source: infow.png
+  icon: healthinfo.png
+  id: healthInfoWindow
+  !text: tr('Health Info')
+  height: 202
+  @onClose: modules.game_healthinfo.onMiniWindowClose()
+  &save: true
+
+  MiniWindowContents
+    Creature
+      id: outfitCreatureBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 5
+      margin-left: 5
+      padding: 4 4 4 4
+      fixed-creature-size: true
+
+    HealthBar
+    HealthLabel
+    GameLabel
+      color: white
+      id: naem
+      font: verdana-11px-rounded
+      anchors.top: parent.top
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 5
+      margin-left: 3
+      text: -------
+    GameLabel
+      color: white
+      id: laevl
+      font: verdana-11px-rounded
+      anchors.top: prev.bottom
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-left: 3
+      text: Lvl: 0000
+    GameLabel
+      id: trophy
+      size: 60 15
+      text-align: leftCenter
+      !tooltip: tr('Torneios')
+      color: white
+      font: verdana-11px-rounded
+      anchors.top: prev.bottom
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 6
+      margin-left: 19
+      text: 000
+    GameLabel
+      id: caught
+      size: 60 15
+      text-align: leftCenter
+      !tooltip: tr('Capturas')
+      color: white
+      font: verdana-11px-rounded
+      anchors.top: prev.bottom
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 0
+      margin-left: 19
+      text: 000
+    GameLabel
+      id: capLabel
+      color: white
+      font: verdana-11px-rounded
+      anchors.top: prev.bottom
+      anchors.left: outfitCreatureBox.right
+      anchors.right: parent.right
+      margin-top: 2
+      margin-left: 19
+    XPBAR
+    explabel
+    FISHBAR
+    FishLabel
+    Panel
+      id: conditionPanel
+      layout:
+        type: horizontalBox
+      height: 22
+      padding: 2
+      margin-top: 2
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      border-width: 1
+      border-color: #00000077
+      background-color: #ffffff11

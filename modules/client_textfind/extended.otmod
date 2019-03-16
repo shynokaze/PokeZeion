@@ -1,0 +1,17 @@
+Module
+  name: Text Find
+  description: Facebook: https://www.facebook.com/italo.c.fernandes
+  author: Italo Banker
+  website: https://www.facebook.com/italo.c.fernandes
+
+  autoload: true
+  autoload-priority: 1000
+
+  scripts:
+    - extended.lua
+
+  dependencies:
+    - game_interface
+
+  @onLoad: init()
+  @onUnload: terminate()
